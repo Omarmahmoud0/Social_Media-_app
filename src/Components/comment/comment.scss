@@ -1,0 +1,74 @@
+@import '../../style.scss';
+
+.Comment-Comp{
+    @include themify($themes){
+        .comment{
+            .comment-userImg{
+
+                img{
+                    width: 42px;
+                    height: 42px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+            .control{
+                align-self: center;
+                .moreHorizIcon{
+                    cursor: pointer;
+                    padding: 7px;
+                    border-radius: 50%;
+                    transition: .2s ease all;
+                    &:hover{
+                        background-color: themed("bgForlike");
+                    }
+                }
+            }
+            padding: 7px 0;
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            .Userinfo{
+            background-color: themed("bgPost");
+            padding: 10px;
+            border-radius: 10px;
+                h1{
+                    width: 100%;
+                    font-weight: 500;
+                    margin-bottom: 5px;
+                    font-size: 16px;
+                }
+            }
+                p{
+                    color: themed("textColor");
+                    font-size: 15px;
+                    font-weight: 500;
+                    margin-left: 4px;
+                    max-width: 520px;
+                    overflow-wrap: break-word;
+                }
+            
+            .date{
+                flex: 1;
+                align-self: center;
+                color: gray;
+                font-size: 13px;
+            }
+            .CommentImg{
+                img{
+                    height: 190px;
+                    width: 100%;
+                    border-radius: 0px;
+                    object-fit: cover;
+                }
+            }
+
+            .Control{
+                display: flex;
+                align-items: center;
+
+            }
+        }
+
+    }
+}

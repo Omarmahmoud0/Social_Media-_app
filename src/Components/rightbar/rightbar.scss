@@ -1,0 +1,177 @@
+@import '../../style.scss';
+
+
+.rightbar{
+    @include themify($themes){
+    width: 50rem;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 50px;
+    left: 0;
+    height: calc(100vh - 50px);
+    overflow: scroll;
+    scrollbar-width: none;
+    background-color: themed("bgSoft");
+
+    @media (max-width: 1100px) {
+        display: none;
+    }
+    .container{
+        padding: 20px;
+        .item{
+            -webkit-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.09);
+            -moz-box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.09);
+            box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.09);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: themed("bg");
+
+            .Suggestions{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                a{
+                    text-decoration: none;
+                    font-size: 15px;
+                    color: dodgerblue;
+                    font-weight: 600;
+                }
+            }
+            span{
+                color: gray;
+            }
+
+
+
+            .users{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 20px 0;
+                .userInfo{
+                    display: flex;
+                align-items: center;
+                position: relative;
+                gap: 10px;
+                img{
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                span{
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: themed("textColor");
+                }
+            }
+                .buttons{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    margin-top: 10px;
+                    button{
+                        border: none;
+                        padding: 8px 18px;
+                        color: white;
+                        cursor: pointer;
+                        background-color: crimson;
+                        border-radius: 5px;
+                        font-size: 15px;
+                        @media (max-width: 1250px) {
+                            font-size: 13.5px;
+                            padding: 8px 14px;
+                        }
+                    }
+                    .Request{
+                        background-color: dodgerblue;
+                    }
+                    span{
+                        font-size: 13px;
+                    }
+                }
+                
+            }
+
+@media (max-width: 1250px) {
+    .Suggestions{
+        span{
+            font-size: 14px;
+        }
+    }
+    .users{
+        .userInfo{
+            img{
+                width: 38px;
+                height: 38px;
+            }
+        }
+    }
+}
+
+            .user{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 20px 0;
+                .userInfo{
+                    display: flex;
+                align-items: center;
+                position: relative;
+                gap: 10px;
+                img{
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                span{
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: themed("textColor");
+                }
+                p{
+                    color: themed("textColorsoft");
+                    font-size: 12px;
+                }
+                .online{
+                    position: absolute;
+                    width: 12px;
+                    height: 12px;
+                    background-color: rgb(49, 223, 49);
+                    border-radius: 50%;
+                    top: 0;
+                    left: 27px;
+                }
+                }
+                span{
+                    font-size: 13px;
+                }
+
+                @media (max-width: 1250px) {
+                    span{
+                        font-size: 14px;
+                    }
+                    .userInfo{
+                        img{
+                            width: 38px;
+                            height: 38px;
+                        }
+                        span{
+                            font-size: 13px;
+                        }
+                        p{
+                            font-size: 11px;
+                        }
+                    }
+                    span{
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+}

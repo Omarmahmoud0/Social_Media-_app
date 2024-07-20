@@ -1,0 +1,121 @@
+@import "../../style.scss";
+
+.changCover{
+    @include themify($themes){
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    padding: 20px 15px;
+    background-color: themed("bgSoft");
+    border-radius: 20px;
+    .btn-close{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 7px;
+        border-radius: 50%;
+        background-color: gray;
+        cursor: pointer;
+        color: white;
+        transition: .3s ease all;
+        &:hover{
+            background-color: themed("hoverStory");
+        }
+    }
+    .uploadImg{
+        margin: 20px 0;
+
+        button {
+            color: white;
+            background-color: rgb(0, 128, 255);
+            --ring-color: #93C5FD;
+            font-weight: 500;
+            border-radius: 5rem;
+            font-size: 1rem;
+            line-height: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+            text-align: center;
+            margin-right: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            border: none;
+          }
+          
+          button:hover {
+            background-color: #1E40AF;
+          }
+          
+          button:focus {
+            box-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+          }
+          
+          button svg {
+            display: inline;
+            width: 1.3rem;
+            height: 1.3rem;
+            margin-right: 0.75rem;
+            color: white;
+            animation: spin_357 1s linear infinite;
+          }
+          
+          @keyframes spin_357 {
+            from {
+              transform: rotate(0deg);
+            }
+          
+            to {
+              transform: rotate(360deg);
+            }
+          }
+
+        label{
+            cursor: pointer;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: rgb(0, 128, 255);
+            &:hover{
+                background-color: themed("hoverStory");
+            }
+        }
+    }
+
+    .changCover__content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+        img{
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        button{
+            background-color: rgb(0, 128, 255);
+            color: white;
+            outline: none;
+            border: none;
+            padding: 8px 35px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: .3s ease all;
+            &:hover{
+                background-color: themed("hoverStory");
+            }
+        }
+    }
+}
+}

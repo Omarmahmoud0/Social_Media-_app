@@ -1,0 +1,242 @@
+@import '../style.scss';
+
+.stories{
+    @include themify($themes){
+    display: flex;
+    gap: 10px;
+    height: 250px;
+    margin-bottom: 30px;
+    // @include mobile{
+    //     height: 50px;
+    //     justify-content: space-evenly;
+    // }
+    @media (max-width: 767px) {
+        height: fit-content;
+    }
+    .swiper {
+        flex: 2;
+        height: 100%;
+        @media (max-width: 767px) {
+            height: 220px;
+        }
+        @media (max-width: 574px) {
+            height: 190px;
+        }
+        @media (max-width: 450px) {
+            height: 150px;
+        }
+      }
+      .swiper-slide {
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        text-align: center;
+        font-size: 18px;
+        background: #555;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+        span{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: rgb(220, 220, 220);
+            font-weight: 500;
+            font-size: 15px;
+
+            @media (max-width: 574px) {
+                font-size: 13.5px;
+            }
+            @media (max-width: 450px) {
+                font-size: 11px;
+            }
+        }
+
+      }
+      
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+  
+    .story{
+        flex: .8;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        
+        @media (max-width: 767px) {
+            flex: .7;
+            height: 220px;
+        }
+        @media (max-width: 574px) {
+            height: 190px;
+        }
+        @media (max-width: 450px) {
+            height: 150px;
+        }
+        
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .model{
+            display: flex;
+            align-items: center;
+            width: max-content;
+            color: white;
+            padding: 7px 5px;
+            position: absolute;
+            left: 0;
+            bottom: 30px;
+            background-color: rgb(0, 98, 209);
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            h4{
+                margin-right: 5px;
+                font-weight: 600;
+            }
+            .icon{
+                color: white;
+            }
+            @media (max-width: 767px) {
+                h4{
+                    font-size: 14px;
+                }
+                .icon{
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+            @media (max-width: 660px) {
+                h4{
+                    font-size: 13px;
+                }
+                .icon{
+                    width: 21px;
+                    height: 21px;
+                }
+            }
+            @media (max-width: 574px) {
+                padding: 7px 4px;
+                h4{
+                    font-size: 12px;
+                }
+                .icon{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            @media (max-width: 450px) {
+                padding: 7px 2px;
+                h4{
+                    font-size: 10px;
+                }
+                .icon{
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
+    .show{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 2;
+        .UploadStory{
+            .container{
+            -webkit-box-shadow: 10px 10px 25px -10px rgba(0,0,0,0.38);
+            -moz-box-shadow: 10px 10px 25px -10px rgba(0,0,0,0.38);
+            box-shadow: 10px 10px 25px -10px rgba(0,0,0,0.38);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 350px;
+            border-radius: 6px;
+            padding: 10px 0;
+            background-color: themed("bgSoft");
+            z-index: 4;
+            transform: translate(-50%,-50%);
+
+            .header{
+                border-bottom: 1px solid themed("border");
+                width: 100%;
+                text-align: center;
+                h3{
+                    color: themed("textColor");
+                    font-size: 22px;
+                    text-transform: uppercase;
+                }
+            }
+            .midel{
+                background-color: themed("bg");
+                padding: 5px;
+                width: 100%;
+                height: 200px;
+                p{
+                    color: white;
+                    font-weight: 500;
+                    margin: 5px 0;
+                    background-color: dodgerblue;
+                    padding: 5px;
+                }
+                input{
+                    border: 1px solid themed("border");
+                    width: 100%;
+                }
+            }
+            .buttons{
+                border-top: 1px solid themed("border");
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 50px;
+                gap: 10px;
+                button{
+                    transition: .2s ease all;
+                    padding: 7px;
+                    outline: none;
+                    border: none;
+                    color: white;
+                    background-color: dodgerblue;
+                    font-weight: 500;
+                    font-size: 16px;
+                    cursor: pointer;
+                    &:nth-child(1){
+                        background-color: lightsteelblue;
+                    }
+                    &:hover{
+                        background-color: themed("hoverStory");
+                    }
+                    &:nth-child(1):hover{
+                        background-color: rgb(152, 166, 185);
+                    }
+                    &:disabled{
+                        background-color: rgb(76, 163, 250);
+                        cursor: not-allowed;
+                    }
+                }
+                
+            }
+        }
+    }
+    }
+}
+}

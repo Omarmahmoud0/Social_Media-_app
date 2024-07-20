@@ -1,0 +1,184 @@
+.login{
+    height: 100svh;
+    background-color: rgb(103, 160, 217);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .card{
+        display: flex;
+        background-color: white;
+        width: 60%;
+        border-radius: 10px;
+        min-height: 550px;
+        overflow: hidden;
+        @media (max-width:960px) {
+            width: 67%;
+        }
+        @media (max-width:768px) {
+            width: 85%;
+        }
+        @media (max-width:475px) {
+            flex-direction: column;
+            width: 90%;
+        }
+        .left{
+            width: 55%;
+            background: linear-gradient(rgba(30, 143, 255, 0.266),rgba(30, 143, 255, 0.266)), url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
+            background-size: cover;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            color: white;
+            h1{
+                font-size: 100px;
+                line-height: 100px;
+            }
+            p{
+
+            }
+            span{
+                font-size: 14px;
+            }
+            button{
+                width: 50%;
+                padding: 10px;
+                border: none;
+                background-color: white;
+                color: dodgerblue;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            @media (max-width:1170px) {
+                padding: 40px;
+                h1{
+                    font-size: 80px;
+                }
+                button{
+                    padding: 8px;
+                }
+            }
+            @media (max-width:960px) {
+                padding: 30px;
+                h1{
+                    font-size: 70px;
+                }
+                p{
+                    font-size: 14px;
+                }
+                button{
+                    padding: 7px;
+                }
+            }
+            @media (max-width:768px) {
+                padding: 20px;
+                h1{
+                    font-size: 60px;
+                }
+                p{
+                    font-size: 13px;
+                    line-height: 20px;
+                }
+                button{
+                    padding: 7px;
+                }
+            }
+            @media (max-width:475px) {
+                width: 100%;
+                gap: 10px;
+                padding: 10px;
+                h1{
+                    font-size: 40px;
+                    height: 70px;
+                }
+                p{
+                    font-size: 13px;
+                    line-height: normal;
+                }
+                button{
+                    padding: 7px;
+                }
+            }
+        }
+        .right{
+            width: 45%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            justify-content: center;
+            h1{
+                color: #555;
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                input{
+                    border: none;
+                    border-bottom: 1px solid lightgray;
+                    padding: 20px 10px;
+                    outline: none;
+                }
+                button{
+                    width: 50%;
+                    padding: 10px;
+                    border: none;
+                    background-color: dodgerblue;
+                    color: white;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+                a{
+                    color: dodgerblue;
+                    font-size: 15px;
+                }
+            }
+
+            @media (max-width:1170px) {
+                padding: 40px;
+                h1{
+                    font-size: 30px;
+                }
+            }
+            @media (max-width:960px) {
+                padding: 30px;
+                h1{
+                    font-size: 27px;
+                }
+            }
+            @media (max-width:768px) {
+                padding: 25px;
+                h1{
+                    font-size: 27px;
+                }
+                form{
+                    p{
+                        font-size: 13.5px;
+                    }
+                }
+            }
+            @media (max-width:475px) {
+                width: 100%;
+                align-items: center;
+                padding: 10px 20px;
+                gap: 10px;
+                h1{
+                    font-size: 25px;
+                }
+                form{
+                    align-items: center;
+                    input{
+                        padding: 15px 10px;
+                        outline: none;
+                        margin-bottom: 17px;
+                    }
+                    p{
+
+                    }
+                }
+            }
+        }
+    }
+}

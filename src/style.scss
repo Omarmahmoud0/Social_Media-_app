@@ -1,0 +1,76 @@
+$themes:(
+    light:(
+        textColor:#000,
+        bg:white,
+        logo:darkblue,
+        bgSoft:#f6f3f3,
+        textColorSoft:#555,
+        border:lightgray,
+        hover:rgb(217, 217, 217),
+        bgPost:rgb(227, 227, 227),
+        bgPostSoft:lavender,
+        textAboutColor: gray,
+        bgForlike: lavender,
+        hoverPost: rgb(213, 213, 247),
+        hoverStory: rgb(0, 128, 255),
+
+    ),
+    dark:(
+        textColor:whitesmoke,
+        bg:#222,
+        logo:white,
+        textAboutColor: rgb(217, 217, 217),
+        bgSoft:#333,
+        textColorsoft:lightgray,
+        border:#444,
+        hover:#555,
+        bgPost:#333,
+        bgPostSoft:rgb(139, 139, 139),
+        bgForlike: #333,
+        hoverPost: #555,
+        hoverStory: rgb(20, 137, 254),
+    )
+);
+::-webkit-scrollbar{
+  width: 11px;
+}
+::-webkit-scrollbar-track{
+  background-color: rgba(112, 128, 144, 0.548);
+}
+::-webkit-scrollbar-thumb{
+  background-color: dodgerblue;
+  border-radius: 9px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: rgb(0, 121, 242);
+}
+
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+      .theme-#{$theme} & {
+        $theme-map: () !global;
+        @each $key, $submap in $map {
+          $value: map-get(map-get($themes, $theme), "#{$key}");
+          $theme-map: map-merge(
+            $theme-map,
+            (
+              $key: $value,
+            )
+          ) !global;
+        }
+        @content;
+        $theme-map: null !global;
+      }
+    }
+  }
+  
+  @function themed($key) {
+    @return map-get($theme-map, $key);
+  }
+
+  @mixin mobile{
+    @media (max-width: 450px) {
+      @content
+      
+    }
+  }

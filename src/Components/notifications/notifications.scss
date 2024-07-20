@@ -1,0 +1,47 @@
+@import '../../style.scss';
+
+.Notifications{
+    @include themify($themes){
+.Notification{
+    -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    -moz-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
+    background-color: themed("bgForlike");
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+    width: 450px;
+    h1{
+        color: themed("textColor");
+        font-size: 25px;
+        padding: 7px 0;
+        border-bottom: 1px solid gray;
+    }
+    .Card{
+        display: flex;
+        // align-items: center;
+        gap: 10px;
+        img{
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .Userinfo{
+            flex: 5;
+            gap: 10px;
+            span{
+                width: 100%;
+                font-weight: 500;
+                font-size: 17px;
+            }
+        }
+    }
+}
+}
+}

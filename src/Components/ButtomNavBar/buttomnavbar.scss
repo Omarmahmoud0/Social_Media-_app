@@ -1,0 +1,29 @@
+@import "../../style.scss";
+
+.ButtomNav{
+    @include themify($themes){
+        width: 100%;
+        padding: 10px 25px 0px;
+        .Nav-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .Icons_NavB{
+                width: 29px;
+                height: 29px;
+                cursor: pointer;
+                color: themed("textColor");
+            }
+            .active{
+                margin-top: -10px;
+            }
+            a{
+                color: themed("textColor");
+            }
+        }
+
+        @media (max-width: 500px) {
+            padding: 10px 15px 0px;
+        }
+    }
+}

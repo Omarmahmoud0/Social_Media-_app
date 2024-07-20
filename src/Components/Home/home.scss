@@ -1,0 +1,26 @@
+@import '../../style.scss';
+
+
+.home{
+    @include themify($themes){
+        min-height: 100dvh;
+        background-color: themed("bgSoft");
+        padding: 20px 70px;
+        width: 100%;
+        @media (max-width: 850px) {
+            padding: 30px 40px;
+        }
+        @media (max-width: 767px) {
+            padding: 40px 80px 80px;
+        }
+        @media (max-width: 660px) {
+            padding: 40px 60px 80px;
+        }
+        @media (max-width: 574px) {
+            padding: 40px 20px 80px;
+        }
+        @media (max-width: 450px) {
+            padding: 40px 5px 80px;
+        }
+    }
+}
