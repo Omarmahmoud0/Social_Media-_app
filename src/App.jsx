@@ -103,13 +103,13 @@ const App = () => {
     localStorage.setItem("Sgin", Sgin);
   }, [Sgin]);
 
-  const ProtectedRoute = ({ children }) => {
-    if (!Sgin) {
-      // return <Navigate to="/login" />;
-      return window.location = "Login"
-    }
-    return children;
-  };
+  // const ProtectedRoute = ({ children }) => {
+  //   if (!Sgin) {
+  //     // return <Navigate to="/login" />;
+  //     return window.location = "Login"
+  //   }
+  //   return children;
+  // };
   // ====== // Path protection // ======== //
 
 
@@ -140,9 +140,9 @@ const App = () => {
           <Route
             path="/"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           >
             <Route path="/" element={<Home />} />
@@ -152,9 +152,9 @@ const App = () => {
           <Route
             path="/friends"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Friends />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route path="/login" element={
