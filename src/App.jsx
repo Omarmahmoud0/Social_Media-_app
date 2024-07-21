@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "./Components/navbar/Navbar";
 import Leftbar from "./Components/leftbar/Leftbar";
 import Rightbar from "./Components/rightbar/Rightbar";
@@ -103,9 +103,12 @@ const App = () => {
     localStorage.setItem("Sgin", Sgin);
   }, [Sgin]);
 
+  const navigate = useNavigate()
+
   const ProtectedRoute = ({ children }) => {
     if (!Sgin) {
-      return <Navigate to="/login" />;
+      // return <Navigate to="/login" />;
+      navigate("/login")
     }
     return children;
   };
@@ -114,7 +117,8 @@ const App = () => {
 
   const PageLogin = ({ children }) => {
     if (Sgin) {
-      return <Navigate to="/" />;
+      // return <Navigate to="/" />;
+      navigate("/")
     }
     return children;
   };
