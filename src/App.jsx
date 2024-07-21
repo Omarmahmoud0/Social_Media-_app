@@ -45,7 +45,8 @@ const App = () => {
         if (user) {
           console.log("user sgin");
           setshowNav(true);
-          setSgin(true);
+          window.location = "Login"
+          // setSgin(true);
         } else {
           console.log("User is signed out");
         }
