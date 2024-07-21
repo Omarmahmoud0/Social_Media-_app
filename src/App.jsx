@@ -40,12 +40,12 @@ const App = () => {
 
   // ======// If the user is present or gone // ======== //
   useEffect(() => {
-    const userState = () => {
+    const userState = (e) => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           console.log("user sgin");
           setshowNav(true);
-          // setSgin(true);
+          setSgin(true);
         } else {
           console.log("User is signed out");
         }
@@ -137,9 +137,9 @@ const App = () => {
           <Route
             path="/"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Layout />
-              // {/* </ProtectedRoute> */}
+              </ProtectedRoute>
             }
           >
             <Route path="/" element={<Home />} />
@@ -149,9 +149,9 @@ const App = () => {
           <Route
             path="/friends"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Friends />
-              // {/* </ProtectedRoute> */}
+              </ProtectedRoute>
             }
           />
           <Route path="/login" element={
