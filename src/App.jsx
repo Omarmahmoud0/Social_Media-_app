@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
-import { Navigate, Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/navbar/Navbar";
 import Leftbar from "./Components/leftbar/Leftbar";
 import Rightbar from "./Components/rightbar/Rightbar";
@@ -95,8 +95,6 @@ const App = () => {
     );
   };
 
-  const navigate = useNavigate()
-
   // ======// Path protection // ======== //
   const [Sgin, setSgin] = useState(
     JSON.parse(localStorage.getItem("Sgin")) || false
@@ -107,8 +105,7 @@ const App = () => {
 
   const ProtectedRoute = ({ children }) => {
     if (!Sgin) {
-      // return <Navigate to="/login" />;
-      return navigate("/login")
+      return <Navigate to="/login" />;
     }
     return children;
   };
@@ -117,8 +114,7 @@ const App = () => {
 
   const PageLogin = ({ children }) => {
     if (Sgin) {
-      // return <Navigate to="/" />;
-      return navigate("/")
+      return <Navigate to="/" />;
     }
     return children;
   };
