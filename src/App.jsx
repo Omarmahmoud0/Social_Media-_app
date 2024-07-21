@@ -113,7 +113,7 @@ const App = () => {
 
 
   const PageLogin = ({ children }) => {
-    if (!Sgin) {
+    if (Sgin) {
       return <Navigate to="/" />;
     }
     return children;
