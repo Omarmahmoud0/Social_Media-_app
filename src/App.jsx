@@ -53,6 +53,7 @@ const App = () => {
     };
     return () => {
       userState();
+      ProtectedRoute
     };
   }, []);
   // ======// If the user is present or gone // ======== //
@@ -104,7 +105,7 @@ const App = () => {
   }, [Sgin]);
 
   const ProtectedRoute = ({ children }) => {
-    if (Sgin) {
+    if (!Sgin) {
       return <Navigate to="/login" />;
     }
     return children;
