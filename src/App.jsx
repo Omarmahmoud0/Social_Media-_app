@@ -40,14 +40,12 @@ const App = () => {
 
   // ======// If the user is present or gone // ======== //
   useEffect(() => {
-    const userState = (e) => {
+    const userState = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           console.log("user sgin");
-          setImmediate(() => {
-            setshowNav(true);
-            setSgin(true);
-          },3000)
+          setshowNav(true);
+          setSgin(true);
         } else {
           console.log("User is signed out");
         }
@@ -105,12 +103,12 @@ const App = () => {
     localStorage.setItem("Sgin", Sgin);
   }, [Sgin]);
 
-  // const ProtectedRoute = ({ children }) => {
-  //   if (!Sgin) {
-  //     return <Navigate to="/login" />;
-  //   }
-  //   return children;
-  // };
+  const ProtectedRoute = ({ children }) => {
+    if (!Sgin) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
   // ====== // Path protection // ======== //
 
 
@@ -153,7 +151,7 @@ const App = () => {
             element={
               // <ProtectedRoute>
                 <Friends />
-              // </ProtectedRoute>
+              // {/* </ProtectedRoute> */}
             }
           />
           <Route path="/login" element={

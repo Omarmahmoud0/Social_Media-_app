@@ -23,6 +23,7 @@ const Login = () => {
       const user = auth.currentUser
       const token = user.uid
       console.log(user);
+      // عايزين تجرب نلغيه 
       setTimeout(() => {
         Navigate("/") 
       },1000)
