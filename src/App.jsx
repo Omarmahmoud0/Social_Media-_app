@@ -104,7 +104,7 @@ const App = () => {
   }, [Sgin]);
 
   const ProtectedRoute = ({ children }) => {
-    if (!Sgin) {
+    if (Sgin) {
       return <Navigate to="/login" />;
     }
     return children;
