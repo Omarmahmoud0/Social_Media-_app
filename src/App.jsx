@@ -53,7 +53,6 @@ const App = () => {
     };
     return () => {
       userState();
-      ProtectedRoute
     };
   }, []);
   // ======// If the user is present or gone // ======== //
@@ -138,9 +137,9 @@ const App = () => {
           <Route
             path="/"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           >
             <Route path="/" element={<Home />} />
@@ -150,9 +149,9 @@ const App = () => {
           <Route
             path="/friends"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Friends />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route path="/login" element={
