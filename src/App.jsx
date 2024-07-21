@@ -44,8 +44,10 @@ const App = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           console.log("user sgin");
-          setshowNav(true);
-          setSgin(true);
+          setImmediate(() => {
+            setshowNav(true);
+            setSgin(true);
+          },3000)
         } else {
           console.log("User is signed out");
         }
