@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './login.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/firebase';
 import 'react-toastify/dist/ReactToastify.css';
 import SginwithGoogle from '../SginwithGoogle/SginwithGoogle';
@@ -16,6 +16,26 @@ const Login = ({setSgin,setshowNav}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+
+
+  useEffect(() => {
+    const userState = (e) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("user sgin");
+          setshowNav(true);
+          setSgin(true);
+        } else {
+          console.log("User is signed out");
+        }
+      });
+    };
+    return () => {
+      userState();
+    };
+  }, []);
+
+
   const handlLogin = async (e) => {
     e.preventDefault()
     try{
@@ -24,9 +44,9 @@ const Login = ({setSgin,setshowNav}) => {
       const token = user.uid
       console.log(user);
       // عايزين تجرب نلغيه
-      // setTimeout(() => {
-      //   Navigate("/")
-      // },1000)
+      setTimeout(() => {
+        Navigate("/")
+      },1000)
       localStorage.setItem("token",token)
     }
     catch (error) {
@@ -61,7 +81,7 @@ const Login = ({setSgin,setshowNav}) => {
               <p>Forgot Password?</p>
             </Link>
           </form>
-          <SginwithGoogle setshowNav={setshowNav} setSgin={setSgin}/>
+          <SginwithGoogle/>
         </div>
       </div>
     </div>
