@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './login.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/firebase';
 import 'react-toastify/dist/ReactToastify.css';
 import SginwithGoogle from '../SginwithGoogle/SginwithGoogle';
@@ -10,11 +10,28 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 
-const Login = () => {
+const Login = ({setSgin,setshowNav}) => {
 
   const Navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  useEffect(() => {
+    const userState = (e) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("user sgin");
+          setshowNav(true);
+          setSgin(true);
+        } else {
+          console.log("User is signed out");
+        }
+      });
+    };
+    return () => {
+      userState();
+    };
+  }, []);
 
   const handlLogin = async (e) => {
     e.preventDefault()
