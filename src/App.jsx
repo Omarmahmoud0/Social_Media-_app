@@ -39,22 +39,22 @@ const App = () => {
   // ======== // Show and Hide Navbar // ======== //
 
   // ======// If the user is present or gone // ======== //
-  // useEffect(() => {
-  //   const userState = (e) => {
-  //     onAuthStateChanged(auth, (user) => {
-  //       if (user) {
-  //         console.log("user sgin");
-  //         setshowNav(true);
-  //         setSgin(true);
-  //       } else {
-  //         console.log("User is signed out");
-  //       }
-  //     });
-  //   };
-  //   return () => {
-  //     userState();
-  //   };
-  // }, []);
+  useEffect(() => {
+    const userState = (e) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("user sgin");
+          setshowNav(true);
+          setSgin(true);
+        } else {
+          console.log("User is signed out");
+        }
+      });
+    };
+    return () => {
+      userState();
+    };
+  }, []);
   // ======// If the user is present or gone // ======== //
 
   // const [socket, setSocket] = useState(false);
@@ -156,7 +156,7 @@ const App = () => {
           />
           <Route path="/login" element={
             <PageLogin>
-              <Login setshowNav={setshowNav} setSgin={setSgin}/>
+              <Login setshowNav={setshowNav}/>
             </PageLogin>
             } />
           <Route path="/register" element={
