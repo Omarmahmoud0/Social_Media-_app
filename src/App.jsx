@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
@@ -11,11 +11,10 @@ import "./style.scss";
 import Friends from "./Components/friends/Friends";
 import { io } from "socket.io-client";
 import { PostsProvider } from "./PostsContext/PostsContext";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./Components/firebase/firebase";
 import { UserProvider } from "./UserContext";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import { DarkModeContextProvider } from "./context/darkModeContext";
+import { StoriesProvider } from "./StoriesContext";
 
 
 export const handlUser = () => {
@@ -107,6 +106,7 @@ const App = () => {
       <DarkModeContextProvider>
       <UserProvider>
       <PostsProvider>
+      <StoriesProvider>
       {showNav && (
         <Navbar
           darkMode={darkMode}
@@ -152,6 +152,7 @@ const App = () => {
             </PageLogin>
             } />
         </Routes>
+        </StoriesProvider>
       </PostsProvider>
       </UserProvider>
       </DarkModeContextProvider>

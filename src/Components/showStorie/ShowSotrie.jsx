@@ -1,26 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./showstorie.scss";
+import CloseIcon from '@mui/icons-material/Close';
+import { UserId } from '../../App';
 
+const ShowStorie = ({setShowStory,UserStory}) => {
 
-const ShowStorie = ({setShowStory}) => {
+  const [animate, setanimate] = useState(false)
+
   return (
-    <div className='showstorie' onClick={() => setShowStory(false)}>
-      <div className='closediv' />
+    <div className={`showstorie animate__animated ${animate ? "animate__zoomOut" : "animate__zoomIn"}`}>
       {/* DIV CONTAINER STORY */}
       <div className="showstorie__container">
         {/* STORY */}
-        <img src="" alt="" />
+          <img className='UserStory' src={UserStory.img} alt="" />
         {/* STORY */}
 
         {/* USER STORY */}
-        <div className="UserStory">
+        <div className="User">
           {/* USER INFO */}
           <div className="UserStory__info">
-            <img src="" alt="" />
-            <p style={{color:"white",fontSize:"30px"}}>sssssss</p>
+            <div>
+            <img src={UserStory.ProfileImg} alt="" />
+            <p onClick={() => UserId(UserStory.uid)}>{UserStory.author}</p>
+            </div>
+            <CloseIcon fontSize='large' className='Close_btn' onClick={() => {
+              setTimeout(() => {
+                setShowStory(false)
+              },400)
+              setanimate(true)
+              }} />
           </div>
           {/* USER INFO */}
-
         </div>
         {/* USER STORY */}
       </div>

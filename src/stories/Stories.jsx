@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { Pagination } from 'swiper/modules';
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { db, storage } from '../Components/firebase/firebase';
 import { toast } from 'react-toastify';
@@ -14,6 +14,7 @@ import Skeleton from "@mui/material/Skeleton";
 import { UserContext } from '../UserContext';
 import 'animate.css';
 import ShowStorie from '../Components/showStorie/ShowSotrie';
+import { StoriesContext } from '../StoriesContext';
 
 
 
@@ -23,6 +24,8 @@ import ShowStorie from '../Components/showStorie/ShowSotrie';
 const Stories = () => {
 
   const userDetails = useContext(UserContext)
+  const Storydata = useContext(StoriesContext)
+  
   
   const [imgStory, setImgStory] = useState('')
 
@@ -32,11 +35,9 @@ const Stories = () => {
 
   const [model , setModel] = useState(false)
 
-  const [Storydata ,setStoryData] = useState([])
-
   const [ShowStory, setShowStory] = useState(false)
 
-console.log(Storydata);
+const [UserStory, setUserStory] = useState(null)
 
   useEffect(() => {
     const uploadStory = () =>{
@@ -71,23 +72,6 @@ console.log(Storydata);
     }
     imgStory && uploadStory()
   },[imgStory])
-
-  useEffect(() => {
-    const q = query(collection(db, "stories"),orderBy("timeStamp","desc"))
-    const unsub = onSnapshot(q, (snapShot) => {
-      let List = [];
-      snapShot.docs.forEach((doc)  => {
-        List.push({id: doc.id , ...doc.data()})
-      })
-      setStoryData(List)
-    },(error) => {
-      console.log(error);
-    });
-    
-    return () => {
-      unsub()
-    }
-},[])
 
   
   const AddStory = async(e) => {
@@ -161,7 +145,10 @@ console.log(Storydata);
       >
         
           {Storydata.map((story) => (
-            <SwiperSlide key={story.id} onClick={() => setShowStory(true)}>
+            <SwiperSlide key={story.id} onClick={() =>{ 
+              setShowStory(true)
+              setUserStory(story)
+              }}>
               
                 <img src={story.img} alt="" />
                 <span>{story.author}</span>
@@ -173,7 +160,7 @@ console.log(Storydata);
     </>
 
     { ShowStory && <div className="showStory">
-      <ShowStorie setshowStory={setShowStory}/>
+      <ShowStorie setShowStory={setShowStory} UserStory={UserStory}/>
     </div>}
 
   </div>
