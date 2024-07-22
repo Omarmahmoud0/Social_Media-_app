@@ -1,13 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './SginwithGoogle.scss'
 import GoogleICon from "../../assets/icons8-google-96.png"
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth'
 import { auth, db } from '../firebase/firebase'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
 import { doc, setDoc } from 'firebase/firestore'
 
-const SginwithGoogle = () => {
+const SginwithGoogle = ({setSgin,setshowNav}) => {
+
+
+
+  useEffect(() => {
+    const userState = (e) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          console.log("user sgin");
+          setshowNav(true);
+          setSgin(true);
+        } else {
+          console.log("User is signed out");
+        }
+      });
+    };
+    return () => {
+      userState();
+    };
+  }, []);
+
+
   const Navgita = useNavigate()
   function GoogleSgin() {
     const Provider = new GoogleAuthProvider()

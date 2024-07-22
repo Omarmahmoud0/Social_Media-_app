@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 
-const Login = () => {
+const Login = ({setSgin,setshowNav}) => {
 
   const Navigate = useNavigate()
   const [email, setEmail] = useState("")
@@ -61,7 +61,7 @@ const Login = () => {
               <p>Forgot Password?</p>
             </Link>
           </form>
-          <SginwithGoogle/>
+          <SginwithGoogle setshowNav={setshowNav} setSgin={setSgin}/>
         </div>
       </div>
     </div>
