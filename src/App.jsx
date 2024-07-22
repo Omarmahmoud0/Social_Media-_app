@@ -37,12 +37,7 @@ const App = () => {
     localStorage.setItem("showNav", showNav);
   }, [showNav]);
   // ======== // Show and Hide Navbar // ======== //
-  const [Sgin, setSgin] = useState(
-    JSON.parse(localStorage.getItem("Sgin")) || false
-  );
-  useEffect(() => {
-    localStorage.setItem("Sgin", Sgin);
-  }, [Sgin]);
+
   // ======// If the user is present or gone // ======== //
   useEffect(() => {
     const userState = (e) => {
@@ -59,7 +54,7 @@ const App = () => {
     return () => {
       userState();
     };
-  }, [Sgin]);
+  }, []);
   // ======// If the user is present or gone // ======== //
 
   // const [socket, setSocket] = useState(false);
@@ -101,7 +96,12 @@ const App = () => {
   };
 
   // ======// Path protection // ======== //
-
+  const [Sgin, setSgin] = useState(
+    JSON.parse(localStorage.getItem("Sgin")) || false
+  );
+  useEffect(() => {
+    localStorage.setItem("Sgin", Sgin);
+  }, [Sgin]);
 
   const ProtectedRoute = ({ children }) => {
     if (!Sgin) {

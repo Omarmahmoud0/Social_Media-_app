@@ -24,9 +24,9 @@ const Login = () => {
       const token = user.uid
       console.log(user);
       // عايزين تجرب نلغيه
-      setTimeout(() => {
-        Navigate("/")
-      },1000)
+      // setTimeout(() => {
+      //   Navigate("/")
+      // },1000)
       localStorage.setItem("token",token)
     }
     catch (error) {
