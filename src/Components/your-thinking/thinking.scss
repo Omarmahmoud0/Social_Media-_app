@@ -14,7 +14,7 @@
     .container {
       padding: 20px;
       @media (max-width: 450px) {
-        padding: 15px;
+        padding: 10px;
       }
       hr {
         margin: 20px 0;
@@ -36,8 +36,8 @@
             height: 45px;
           }
           @media (max-width: 450px) {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
           }
         }
         input {
@@ -126,7 +126,7 @@
 @media (max-width: 660px) {
   .files {
   padding: 8px 13px;
-  font-size: 14px;
+  font-size: 15px;
   
   .Icon-Think{
     width: 21px;
@@ -135,13 +135,13 @@
   }
   button {
   padding: 10px 24px;
-  font-size: 14px;
+  font-size: 15px;
   }
 }
 @media (max-width: 574px) {
   .files {
   padding: 8px 12px;
-  font-size: 13px;
+  font-size: 14px;
   
   .Icon-Think{
     width: 20px;
@@ -150,13 +150,13 @@
   }
   button {
   padding: 10px 22px;
-  font-size: 13px;
+  font-size: 14px;
   }
 }
 @media (max-width: 450px) {
   .files {
   padding: 8px 10px;
-  font-size: 12px;
+  font-size: 13px;
   
   .Icon-Think{
     width: 19px;

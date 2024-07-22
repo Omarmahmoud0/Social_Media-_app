@@ -149,7 +149,7 @@ const Navbar = ({ setDarkMode, darkMode, setshowNav, setSgin }) => {
               </Skeleton>
             </>
           )}
-          {Icontoggle && showNotification !== true ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+          {Icontoggle && showNotification !== true ? <ArrowDropUpIcon className="ArrowIcon"/> : <ArrowDropDownIcon className="ArrowIcon"/>}
         </div>
       </div>
       {/* SECTION RIGHT */}

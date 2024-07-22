@@ -102,9 +102,21 @@
                 height: 32px;
                 border-radius: 50%;
                 object-fit: cover;
+                @include mobile{
+                    width: 35px;
+                    height: 35px;
+                }
             }
             span{
                 font-size: 15px;
+                @include mobile{
+                    display: none;
+                }
+            }
+            .ArrowIcon{
+                @include mobile{
+                    display: none;
+                }
             }
         }
     }

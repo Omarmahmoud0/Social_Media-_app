@@ -199,7 +199,7 @@ const Post = ({ post }) => {
         {/* ====== // Post Content // ======= */}
         <div className="content">
           <p>{post.title}</p>
-          <img src={post.img} alt="" />
+          {post.img ? <img src={post.img} alt="" /> : ""}
         </div>
         {/* ====== // Post Content // ======= */}
 
