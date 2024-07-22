@@ -37,7 +37,12 @@ const App = () => {
     localStorage.setItem("showNav", showNav);
   }, [showNav]);
   // ======== // Show and Hide Navbar // ======== //
-
+  const [Sgin, setSgin] = useState(
+    JSON.parse(localStorage.getItem("Sgin")) || false
+  );
+  useEffect(() => {
+    localStorage.setItem("Sgin", Sgin);
+  }, [Sgin]);
   // ======// If the user is present or gone // ======== //
   useEffect(() => {
     const userState = (e) => {
@@ -45,8 +50,7 @@ const App = () => {
         if (user) {
           console.log("user sgin");
           setshowNav(true);
-          window.location = "Login"
-          // setSgin(true);
+          setSgin(true);
         } else {
           console.log("User is signed out");
         }
@@ -55,7 +59,7 @@ const App = () => {
     return () => {
       userState();
     };
-  }, []);
+  }, [Sgin]);
   // ======// If the user is present or gone // ======== //
 
   // const [socket, setSocket] = useState(false);
@@ -97,28 +101,20 @@ const App = () => {
   };
 
   // ======// Path protection // ======== //
-  const [Sgin, setSgin] = useState(
-    JSON.parse(localStorage.getItem("Sgin")) || false
-  );
-  useEffect(() => {
-    localStorage.setItem("Sgin", Sgin);
-  }, [Sgin]);
 
-  // const ProtectedRoute = ({ children }) => {
-  //   if (!Sgin) {
-  //     // return <Navigate to="/login" />;
-  //     return window.location = "Login"
-  //   }
-  //   return children;
-  // };
+
+  const ProtectedRoute = ({ children }) => {
+    if (!Sgin) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
   // ====== // Path protection // ======== //
 
 
   const PageLogin = ({ children }) => {
     if (Sgin) {
-      // return <Navigate to="/" />;
-      return window.location = "/"
-
+      return <Navigate to="/" />;
     }
     return children;
   };
@@ -141,9 +137,9 @@ const App = () => {
           <Route
             path="/"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Layout />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }
           >
             <Route path="/" element={<Home />} />
@@ -153,9 +149,9 @@ const App = () => {
           <Route
             path="/friends"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Friends />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }
           />
           <Route path="/login" element={
