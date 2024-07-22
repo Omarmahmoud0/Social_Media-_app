@@ -38,24 +38,6 @@ const App = () => {
   }, [showNav]);
   // ======== // Show and Hide Navbar // ======== //
 
-  // ======// If the user is present or gone // ======== //
-  // useEffect(() => {
-  //   const userState = (e) => {
-  //     onAuthStateChanged(auth, (user) => {
-  //       if (user) {
-  //         console.log("user sgin");
-  //         setshowNav(true);
-  //         setSgin(true);
-  //       } else {
-  //         console.log("User is signed out");
-  //       }
-  //     });
-  //   };
-  //   return () => {
-  //     userState();
-  //   };
-  // }, []);
-  // ======// If the user is present or gone // ======== //
 
   // const [socket, setSocket] = useState(false);
 

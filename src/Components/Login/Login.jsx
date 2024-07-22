@@ -17,7 +17,7 @@ const Login = ({setSgin,setshowNav}) => {
   const [password, setPassword] = useState("")
 
 
-
+  // ======// If the user is present or gone // ======== //
   useEffect(() => {
     const userState = (e) => {
       onAuthStateChanged(auth, (user) => {
@@ -34,6 +34,7 @@ const Login = ({setSgin,setshowNav}) => {
       userState();
     };
   }, []);
+  // ======// If the user is present or gone // ======== //
 
 
   const handlLogin = async (e) => {
@@ -43,11 +44,11 @@ const Login = ({setSgin,setshowNav}) => {
       const user = auth.currentUser
       const token = user.uid
       console.log(user);
-      // عايزين تجرب نلغيه
       setTimeout(() => {
         Navigate("/")
       },1000)
       localStorage.setItem("token",token)
+      toast.success("User logged in Successfully",{position:"top-center"})
     }
     catch (error) {
       console.log((error));
