@@ -303,10 +303,14 @@
                         border-radius: 50%;
                         background-color: themed("bgForlike");
                         color: themed("textColor");
-                        @media (max-width: 660px) {
-                            width: 31px;
-                            height: 31px;
-                        }
+                        // @media (max-width: 660px) {
+                        //     width: 31px;
+                        //     height: 31px;
+                        // }
+                        // @media (max-width: 660px) {
+                        //     width: 31px;
+                        //     height: 31px;
+                        // }
                     }
                     input{
                         margin-top: 0px;
