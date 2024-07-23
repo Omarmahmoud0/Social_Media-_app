@@ -26,9 +26,14 @@
         padding: 20px 15px;
         width: 100%;
         border-radius: 20px;
-
+        @media (max-width: 550px) {
+            flex-direction: column;
+        }
         .frist{
             width: 50%;
+            @media (max-width: 550px) {
+                width: 100%;
+            }
             div{
                 display: flex;
                 align-items: center;
@@ -44,6 +49,7 @@
                 }
                 p{
                     color: themed("textAboutColor");
+                    overflow-wrap: break-word;
                 }
                 .Icon-img{
                     width: 35px;
