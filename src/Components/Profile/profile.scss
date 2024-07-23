@@ -29,6 +29,10 @@
                 transform: translateX(-50%);
                 left: 50%;
                 top: 65%;
+                @include mobile{
+                    width: 175px;
+                    height: 175px;
+                }
             }
             .Skeleton{
                 position: absolute;
@@ -58,6 +62,9 @@
                 &:hover{
                     background-color: themed("hoverPost");
                 }
+                @media (max-width: 550px) {
+                    bottom: 84%;
+                }
             }
         }
         .profileContainer{
@@ -78,7 +85,6 @@
                 padding: 40px 5px 80px;
             }
         .uInfo{
-            height: 220px;
             -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
             -moz-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
             box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
@@ -89,10 +95,7 @@
             margin: 10px auto;
             @include mobile{
                 flex-direction: column;
-                height: 45vh;
                 padding: 15px;
-                margin-top: 70px;
-                max-width: 350px;
             }
             .test{
                 margin-top: 5px;

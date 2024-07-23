@@ -14,6 +14,18 @@
     padding: 20px 15px;
     background-color: themed("bgSoft");
     border-radius: 20px;
+    @media (max-width: 992px) {
+      width: 60%;
+    }
+    @media (max-width: 767px) {
+      width: 70%;
+    }
+    @media (max-width: 574px) {
+      width: 80%;
+    }
+    @media (max-width: 450px) {
+      width: 95%;
+    }
     .btn-close{
         position: absolute;
         top: 10px;
