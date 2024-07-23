@@ -55,12 +55,19 @@
                             height: 45px;
                             border-radius: 50%;
                             object-fit: cover;
+                            @media (max-width: 700px) {
+                                width: 40px;
+                                height: 40px;
+                            }
                         }
                         p{
                             font-size: 1rem;
                             font-weight: 600;
                             color: white;
                             cursor: pointer;
+                            @media (max-width: 700px) {
+                                font-size: 0.8rem;
+                            }
                         }
                     }
                     .Close_btn{
