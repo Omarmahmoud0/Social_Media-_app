@@ -221,7 +221,7 @@ const EditProfile = ({ user, setBoxEditProfile }) => {
                 type="file"
                 name="profilePicture"
                 id="profilePicture"
-                style={{ width: "0px" }}
+                style={{ display:"none" }}
                 onChange={(e) => {
                   setprofileimg(e.target.files[0])
                   setInputCheck(e.target.files[0])

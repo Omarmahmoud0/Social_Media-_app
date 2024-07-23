@@ -3,13 +3,25 @@
 .Edit{
     @include themify($themes){
     width: 60%;
+    @media (max-width: 1100px) {
+        width: 70%;
+    }
+    @media (max-width: 767px) {
+        width: 85%;
+        padding: 10px;
+    }
+    @media (max-width: 574px) {
+        width: 100%;
+        padding: 10px;
+    }
+    
     display: flex;
     align-items: center;
     flex-direction: column;
     -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
     -moz-box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
     box-shadow: 0px 0px 25px -10px rgba(0,0,0,0.38);
-    padding: 15px 15px;
+    padding: 15px;
     background-color: themed("bg");
     border-radius: 20px;
     margin: auto;
@@ -30,16 +42,38 @@
         &:hover{
             background-color: rgb(0, 128, 255, .8);
         }
+        @media (max-width: 1100px) {
+            font-size: 36px;
+        }
+        @media (max-width: 767px) {
+            font-size: 32px;
+        }
     }
 
     p{
-        font-size: 20px;
+        font-size: 23px;
         font-weight: 500;
         color: themed("textColor");
+        @media (max-width: 1100px) {
+            font-size: 21px;
+        }
+        @media (max-width: 767px) {
+            font-size: 19px;
+        }
+        @media (max-width: 465px) {
+            font-size: 16px;
+            // max-width: 45%;
+        }
     }
     h1{
         font-size: 30px;
         color: themed("textColor");
+        @media (max-width: 1100px) {
+            font-size: 27px;
+        }
+        @media (max-width: 767px) {
+            font-size: 24px;
+        }
     }
 
     .Edit_container{
@@ -75,6 +109,12 @@
                     border-radius: 5px;
                     background-color: unset;
                 }
+                @media (max-width: 1100px) {
+                    font-size: 16px;
+                }
+                @media (max-width: 767px) {
+                    font-size: 14px;
+                }
             }
         }
 
@@ -90,13 +130,18 @@
 
             .profilePicture{
             padding: 25px 10px 55px;
+            @media (max-width: 767px) {
+            padding: 25px 5px 55px;
+            }
 
                 .flex{
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    
+                    @media (max-width: 465px) {
+                        gap: 35px;
+                    }
                     
                     .btn-Edit{
                         font-size: 17px;
@@ -106,11 +151,19 @@
                         color: rgb(0, 128, 255);
                         transition: .3s ease all;
                         background-color: transparent;
+                        font-weight: 600;
                         &:hover{
                             color: white;
                             background-color: rgb(0, 128, 255);
                             padding: 5px 15px;
                             border-radius: 5px;
+                        }
+                        @media (max-width: 1100px) {
+                            font-size: 16px;
+                        }
+                        @media (max-width: 767px) {
+                            font-size: 14px;
+                            width: max-content;
                         }
                     }
                 }
@@ -120,12 +173,24 @@
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-
+                    margin-top: 15px;
                     img{
                         width: 150px;
                         height: 150px;
                         border-radius: 50%;
                         object-fit: cover;
+                        @media (max-width: 1100px) {
+                            width: 145px;
+                            height: 145px;
+                        }
+                        @media (max-width: 767px) {
+                            width: 135px;
+                            height: 135px;
+                        }
+                        @media (max-width: 450px) {
+                            width: 125px;
+                            height: 125px;
+                        }
                     }
                     span{
                         margin-top: 7px;
@@ -145,6 +210,15 @@
                         &:focus{
                             border: 1px solid rgb(0, 128, 255);
                         }
+                        @media (max-width: 1100px) {
+                            width: 40%;
+                        }
+                        @media (max-width: 767px) {
+                            width: 45%;
+                        }
+                        @media (max-width: 450px) {
+                            width: 60%;
+                        }
                     }
                 }
             }
@@ -153,6 +227,9 @@
         .about{
             width: 100%;
             padding: 20px 10px 50px;
+            @media (max-width: 767px) {
+                padding: 25px 5px 50px;
+            }
             border-radius: 20px;
             input{
                 margin-top: 7px;
@@ -179,6 +256,15 @@
                 p{
                     font-size: 23px;
                     color: themed("textColor");
+                    @media (max-width: 1100px) {
+                        font-size: 21px;
+                    }
+                    @media (max-width: 767px) {
+                        font-size: 19px;
+                    }
+                    @media (max-width: 465px) {
+                        font-size: 16px;
+                    }
                 }
             }
 
@@ -187,26 +273,40 @@
 
             .Content{
             display: flex;
-            justify-content: space-between;
-            padding: 20px 15px;
+            padding: 20px 0;
             width: 100%;
             border-radius: 20px;
-
+            @media (max-width: 465px) {
+                flex-direction: column;
+            }
             .frist{
                 width: 50%;
-                
+                @media (max-width: 465px) {
+                    width: 100%;
+                }
                 div{
+                    width: 100%;
                     display: flex;
                     align-items: center;
                     gap: 10px;
                     margin-bottom: 10px;
                     border-bottom: 1px solid themed("border");
                     padding: 30px 0;
+                    @media (max-width: 660px) {
+                        gap: 5px;
+                    }
+                    @media (max-width: 465px) {
+                        gap: 10px;
+                    }
                     .Icon-about{
                         padding: 5px;
                         border-radius: 50%;
                         background-color: themed("bgForlike");
                         color: themed("textColor");
+                        @media (max-width: 660px) {
+                            width: 31px;
+                            height: 31px;
+                        }
                     }
                     input{
                         margin-top: 0px;
@@ -214,6 +314,9 @@
                     p{
                         color: themed("textAboutColor");
                         font-size: 16px;
+                        @media (max-width: 900px) {
+                            font-size: 14px;
+                        }
                     }
                     .Icon-img{
                         width: 35px;
@@ -221,10 +324,24 @@
                         padding: 5px;
                         background-color: themed("bgForlike");
                         border-radius: 50%;
+                        @media (max-width: 660px) {
+                            width: 31px;
+                            height: 31px;
+                        }
+
                     }
                     .not_Added{
                         color: dodgerblue;
                         font-size: 15px;
+                        @media (max-width: 900px) {
+                            font-size: 14px;
+                        }
+                        @media (max-width: 660px) {
+                            font-size: 13px;
+                        }
+                        @media (max-width: 465px) {
+                            font-size: 14px;
+                        }
                     }
                     button{
                         outline: none;
