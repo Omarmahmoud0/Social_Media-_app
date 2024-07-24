@@ -128,10 +128,11 @@ const [UserStory, setUserStory] = useState(null)
 
     <>
       <Swiper
-        slidesPerView={3.5}
+        slidesPerView={3.2}
         spaceBetween={10}
         pagination={{
           clickable: true,
+          
         }}
         modules={[Pagination]}
         className="mySwiper"
