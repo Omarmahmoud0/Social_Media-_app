@@ -650,7 +650,7 @@ const EditProfile = ({ user, setBoxEditProfile }) => {
               </div>
               {/* <input type="text" className="" /> */}
                 <IMaskInput
-                mask="(+00) 000-00-0000"
+                mask="(+00) 000-00-00000"
                 definitions={{
                 '#': /[1-9]/,
                 }}
@@ -661,7 +661,7 @@ const EditProfile = ({ user, setBoxEditProfile }) => {
                   setInputCheck(e.target.value)
                 }}
                 disabled={!Editmedia}  
-                placeholder="(+20) 101-13-1415"
+                placeholder="(+20) 101-13-14156"
                 value={Editmedia ? whatsapp : user.whatsapp}
                 />
             </div>
