@@ -104,13 +104,7 @@ const [UserStory, setUserStory] = useState(null)
   return(
   <div className='stories'>
 
-    <div className='story'>
-    {userDetails ? <img src={userDetails.ProfileImg} alt="" /> : <Skeleton variant="rounded" width="100%" height="100%" />}
-      <div onClick={handlToggle} className="model">
-        <h4>Create Story</h4>
-        <AddCircleRoundedIcon className='icon'/>
-      </div>
-    </div>
+    
 
     {model && <div className="show animate__animated animate__fadeIn animate__faster">
           <div className="UploadStory">
@@ -143,7 +137,15 @@ const [UserStory, setUserStory] = useState(null)
         className="mySwiper"
         style={{width:"200px"}}
       >
-        
+        <SwiperSlide>
+          <div className='story'>
+          {userDetails ? <img src={userDetails.ProfileImg} alt="" /> : <Skeleton variant="rounded" width="100%" height="100%" />}
+          <div onClick={handlToggle} className="model">
+          <h4>Create Story</h4>
+          <AddCircleRoundedIcon className='icon'/>
+          </div>
+          </div>
+        </SwiperSlide>
           {Storydata.map((story) => (
             <SwiperSlide key={story.id} onClick={() =>{ 
               setShowStory(true)

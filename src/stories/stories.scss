@@ -6,10 +6,6 @@
     gap: 10px;
     height: 250px;
     margin-bottom: 30px;
-    // @include mobile{
-    //     height: 50px;
-    //     justify-content: space-evenly;
-    // }
     @media (max-width: 767px) {
         height: fit-content;
     }
@@ -27,6 +23,8 @@
         }
       }
       .swiper-slide {
+        height: 100%;
+        width: 100%;
         border-radius: 10px;
         overflow: hidden;
         position: relative;
@@ -67,22 +65,12 @@
       
   
     .story{
-        flex: .8;
         border-radius: 10px;
+        width: 100%;
+        height: 100%;
         overflow: hidden;
         position: relative;
         cursor: pointer;
-        
-        @media (max-width: 767px) {
-            flex: .7;
-            height: 220px;
-        }
-        @media (max-width: 574px) {
-            height: 210px;
-        }
-        @media (max-width: 450px) {
-            height: 190px;
-        }
         
         img{
             width: 100%;
