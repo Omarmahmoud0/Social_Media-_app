@@ -182,7 +182,7 @@ const Profile = () => {
                     border === "Media" ? "show-content" : "hide-content"
                   }
                 >
-                  <Media />
+                  <Media user={user}/>
                 </div>
               </div>
               {/* CONTAINER CONTIAN THE DATA OF USER */}
