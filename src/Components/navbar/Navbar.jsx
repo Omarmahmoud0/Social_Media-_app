@@ -22,24 +22,27 @@ import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { UserContext } from "../../UserContext";
 import 'animate.css';
-import { UserId } from "../../App";
+import { OutsideClick, UserId } from "../../App";
 import ButtomNavBar from "../ButtomNavBar/ButtomNavBar";
 
 
 
-const Navbar = ({ setDarkMode, darkMode, setshowNav, setSgin }) => {
+const Navbar = ({ setDarkMode, darkMode, setshowNav, setSgin , setSideLeftBar, sideLeftBar}) => {
 
   const userDetails = useContext(UserContext)
 
   const [Icontoggle, setIcontoggle] = useState(false);
   const [showNotification, setshowNotification] = useState(false);
+  const Navigate = useNavigate();
+
+
   const handlToggle = () => {
     setIcontoggle(!Icontoggle);
   };
+
   const ShowNotifica = () => {
     setshowNotification(!showNotification);
   };
-  const Navigate = useNavigate();
 
   // function LogOut Users //
   const logOut = () => {
@@ -60,18 +63,18 @@ const Navbar = ({ setDarkMode, darkMode, setshowNav, setSgin }) => {
       });
   };
   // function LogOut Users //
-
-  const ProfileClose = () => {
+  
+  // Add event listener when modal is open
+  const domNode = OutsideClick(() =>{
     setIcontoggle(false);
-  };
-
+  })
 
 
 
   const [arry, setarry] = useState([1, 2, 3, 4, 5]);
 
   return (
-    <div className="navbar">
+    <div className="navbar" ref={domNode}>
 
       {/* SECTION LEFT */}
       <div className="left">
@@ -117,7 +120,7 @@ const Navbar = ({ setDarkMode, darkMode, setshowNav, setSgin }) => {
       {/* SECTION LEFT */}
 
       {/* SECTION RIGHT */}
-      <div className="right">
+      <div className="right" >
         <div className="NavIconRight">
           <IconButton>
             <TelegramIcon className="Icons" />
@@ -133,7 +136,7 @@ const Navbar = ({ setDarkMode, darkMode, setshowNav, setSgin }) => {
           </IconButton>
         </div>
 
-        <div className="user" onClick={handlToggle}>
+        <div className="user"  onClick={handlToggle}>
           {userDetails ? (
             <>
               <img src={userDetails.ProfileImg} alt="" />
@@ -155,9 +158,9 @@ const Navbar = ({ setDarkMode, darkMode, setshowNav, setSgin }) => {
       {/* SECTION RIGHT */}
 
       {/* SECTION PROFILE INFO */}
-      {Icontoggle && showNotification !== true && (
-        <div onClick={ProfileClose} className="show animate__animated animate__slideInRight animate__faster">
-          <div className="profileInfo">
+      {Icontoggle && (
+
+          <div  className="profileInfo">
             <div className="email">
               {userDetails ? (
                 <>
@@ -187,12 +190,12 @@ const Navbar = ({ setDarkMode, darkMode, setshowNav, setSgin }) => {
               </div>
             </div>
           </div>
-        </div>
+        
       )}
       {/* SECTION PROFILE INFO */}
 
       <div className="buttomNav">
-        <ButtomNavBar setDarkMode={setDarkMode} darkMode={darkMode} ShowNotifica={ShowNotifica} arry={arry}/>
+        <ButtomNavBar sideLeftBar={sideLeftBar} setSideLeftBar={setSideLeftBar} setDarkMode={setDarkMode} darkMode={darkMode} ShowNotifica={ShowNotifica} arry={arry}/>
       </div>
 
       {showNotification && (

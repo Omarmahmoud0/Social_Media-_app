@@ -4,6 +4,9 @@
     @include themify($themes){
         background-color: themed("bg");
         height: 100%;
+        @media (max-width : 767px) {
+            padding-bottom: 50px;
+        }
         h2{
             color: themed("textColor");
             margin-bottom: 20px;

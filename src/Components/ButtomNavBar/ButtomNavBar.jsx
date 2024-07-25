@@ -10,7 +10,7 @@ import { Badge, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
-const ButtomNavBar = ({ShowNotifica,setDarkMode,darkMode,arry}) => {
+const ButtomNavBar = ({ShowNotifica,setDarkMode,darkMode,arry,setSideLeftBar , sideLeftBar}) => {
   return (
     <div className='ButtomNav'>
         <div className="Nav-container">
@@ -34,7 +34,7 @@ const ButtomNavBar = ({ShowNotifica,setDarkMode,darkMode,arry}) => {
             </IconButton>
             )}
             <IconButton>
-                <GridViewOutlinedIcon className='Icons_NavB'/>
+                <GridViewOutlinedIcon onClick={() => setSideLeftBar(!sideLeftBar)} className='Icons_NavB'/>
             </IconButton>
             <Link to="/">
                 <IconButton>

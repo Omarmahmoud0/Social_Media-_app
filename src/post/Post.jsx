@@ -21,7 +21,7 @@ import { db } from "../Components/firebase/firebase";
 import Notifications from "../Components/notifications/Notifications";
 import LikesPost from "../Components/likes/LikesPost";
 import { UserContext } from "../UserContext";
-import { UserId } from "../App";
+import { OutsideClick, UserId } from "../App";
 
 
 
@@ -147,9 +147,13 @@ const Post = ({ post }) => {
   }
   // ======   Delete Like on the Post  ===== //
 
+  const domNode = OutsideClick(() =>{
+    setdivLikes(false)
+    setShowEdit(false)
+  })
 
   return (
-    <div className="post">
+    <div className="post" ref={domNode}>
       <div className="container">
         {/* ====== // DataUser // ======= */}
         <div className="user">
@@ -292,7 +296,7 @@ const Post = ({ post }) => {
       </div>
 
       {divLikes && (
-        <div className="cover" onClick={() => setdivLikes(false)}>
+        <div className="cover" >
           <div className="Likes animate__animated animate__slideInUp">
             <div className="Likes_Container">
               <FavoriteOutlinedIcon className="like"/>

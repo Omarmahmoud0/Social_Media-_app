@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
@@ -17,18 +17,35 @@ import { DarkModeContextProvider } from "./context/darkModeContext";
 import { StoriesProvider } from "./StoriesContext";
 
 
-export const handlUser = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  return user;
-};
+// Add event listener when modal is open
+export let OutsideClick = (handler) => {
+  const modalRef = useRef(null);
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (!modalRef.current.contains(e.target)) {
+        handler()
+      }
+    };
 
- export function UserId (userID) {
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  });
+  return modalRef
+}
+// Add event listener when modal is open
+
+export function UserId (userID) {
   window.location = `/profile/?userId=${userID}`;
 }
 
 
 const App = () => {
   // ======== // Show and Hide Navbar // ======== //
+  const [sideLeftBar, setSideLeftBar] = useState(false)
+
   const [showNav, setshowNav] = useState(
     JSON.parse(localStorage.getItem("showNav")) || false
   );
@@ -66,7 +83,7 @@ const App = () => {
     return (
       <div>
         <div style={{ display: "flex" }}>
-          <Leftbar />
+          <Leftbar sideLeftBar={sideLeftBar} setSideLeftBar={setSideLeftBar}/>
           {/* <div> */}
             <Outlet />
           {/* </div> */}
@@ -113,6 +130,8 @@ const App = () => {
           setDarkMode={setDarkMode}
           setshowNav={setshowNav}
           setSgin={setSgin}
+          setSideLeftBar={setSideLeftBar}
+          sideLeftBar={sideLeftBar}
         />
       )}
         <Routes>
