@@ -74,7 +74,14 @@
     }
 
     @media (max-width: 767px) {
-        display: none;
+        position: fixed;
+        z-index: 5;
+        bottom: 0;
+        padding: 15px 0 50px;
+        width: 60%;
+    }
+    @media (max-width: 500px) {
+        width: 70%;
     }
 
     @media (max-width: 850px) {

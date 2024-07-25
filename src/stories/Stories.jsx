@@ -104,8 +104,6 @@ const [UserStory, setUserStory] = useState(null)
   return(
   <div className='stories'>
 
-    
-
     {model && <div className="show animate__animated animate__fadeIn animate__faster">
           <div className="UploadStory">
             <div className="container">
@@ -129,7 +127,7 @@ const [UserStory, setUserStory] = useState(null)
     <>
       <Swiper
         slidesPerView={3.2}
-        spaceBetween={10}
+        spaceBetween={8}
         pagination={{
           clickable: true,
           
