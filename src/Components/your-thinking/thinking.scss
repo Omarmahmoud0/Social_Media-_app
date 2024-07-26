@@ -171,16 +171,5 @@
 
         }
     }
-
-    .emoji {
-      position: absolute;
-      z-index: 2;
-      right: 303px;
-      @media (max-width: 450px) {
-        top: 140px;
-        left: 0;
-      }
-      top: 55%;
-    }
   }
 }

@@ -153,7 +153,7 @@ const Thinking = () => {
         </form>
       </div>
       { emoji && <div className="emoji">
-        <Picker data={data} emojiButtonSize={30} Size="40" theme={`${JSON.parse(localStorage.getItem("darkMode")) ? "dark" : "light"}`} onEmojiSelect={addEmoji}/>
+        <Picker data={data} emojiButtonSize={34} Size="40" theme={`${JSON.parse(localStorage.getItem("darkMode")) ? "dark" : "light"}`} onEmojiSelect={addEmoji}/>
       </div>}
     </div>
   );
