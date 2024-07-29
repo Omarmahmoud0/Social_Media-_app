@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./Components/navbar/Navbar";
 import Leftbar from "./Components/leftbar/Leftbar";
 import Rightbar from "./Components/rightbar/Rightbar";
@@ -16,35 +16,34 @@ import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import { DarkModeContextProvider } from "./context/darkModeContext";
 import { StoriesProvider } from "./StoriesContext";
 
-
 // Add event listener when modal is open
 export let OutsideClick = (handler) => {
   const modalRef = useRef(null);
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (!modalRef.current.contains(e.target)) {
-        handler()
+        handler();
       }
     };
 
-    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener("click", handleOutsideClick);
 
     return () => {
-      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener("click", handleOutsideClick);
     };
   });
-  return modalRef
-}
+  return modalRef;
+};
 // Add event listener when modal is open
 
-export function UserId (userID) {
+export function UserId(userID) {
   window.location = `/profile/?userId=${userID}`;
 }
 
-
 const App = () => {
+  const location = useLocation();
   // ======== // Show and Hide Navbar // ======== //
-  const [sideLeftBar, setSideLeftBar] = useState(false)
+  const [sideLeftBar, setSideLeftBar] = useState(false);
 
   const [showNav, setshowNav] = useState(
     JSON.parse(localStorage.getItem("showNav")) || false
@@ -53,7 +52,6 @@ const App = () => {
     localStorage.setItem("showNav", showNav);
   }, [showNav]);
   // ======== // Show and Hide Navbar // ======== //
-
 
   // const [socket, setSocket] = useState(false);
 
@@ -83,9 +81,9 @@ const App = () => {
     return (
       <div>
         <div style={{ display: "flex" }}>
-          <Leftbar sideLeftBar={sideLeftBar} setSideLeftBar={setSideLeftBar}/>
+          <Leftbar sideLeftBar={sideLeftBar} setSideLeftBar={setSideLeftBar} />
           {/* <div> */}
-            <Outlet />
+          <Outlet />
           {/* </div> */}
           <Rightbar />
         </div>
@@ -103,12 +101,11 @@ const App = () => {
 
   const ProtectedRoute = ({ children }) => {
     if (!Sgin) {
-      return <Navigate to="/login" />;
+      return <Navigate to="/login" state={{ path: location.pathname }} />;
     }
     return children;
   };
   // ====== // Path protection // ======== //
-
 
   const PageLogin = ({ children }) => {
     if (Sgin) {
@@ -117,63 +114,71 @@ const App = () => {
     return children;
   };
 
-  
   return (
     <div className={`theme-${darkMode ? "dark" : "light"} app`}>
       <DarkModeContextProvider>
-      <UserProvider>
-      <PostsProvider>
-      <StoriesProvider>
-      {showNav && (
-        <Navbar
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
-          setshowNav={setshowNav}
-          setSgin={setSgin}
-          setSideLeftBar={setSideLeftBar}
-          sideLeftBar={sideLeftBar}
-        />
-      )}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Layout />
-              </ProtectedRoute>
-            }
-          >
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-          </Route>
+        <UserProvider>
+          <PostsProvider>
+            <StoriesProvider>
+              {showNav && (
+                <Navbar
+                  darkMode={darkMode}
+                  setDarkMode={setDarkMode}
+                  setshowNav={setshowNav}
+                  setSgin={setSgin}
+                  setSideLeftBar={setSideLeftBar}
+                  sideLeftBar={sideLeftBar}
+                />
+              )}
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <ProtectedRoute>
+                      <Layout />
+                    </ProtectedRoute>
+                  }
+                >
+                  <Route path="/" element={<Home />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Route>
 
-          <Route
-            path="/friends"
-            element={
-              <ProtectedRoute>
-                <Friends />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/login" element={
-            <PageLogin>
-              <Login setshowNav={setshowNav} setSgin={setSgin}/>
-            </PageLogin>
-            } />
-          <Route path="/register" element={
-            <PageLogin>
-              <Register />
-            </PageLogin>
-            } />
-            <Route path="/ForgotPassword" element={
-            <PageLogin>
-              <ForgotPassword />
-            </PageLogin>
-            } />
-        </Routes>
-        </StoriesProvider>
-      </PostsProvider>
-      </UserProvider>
+                <Route
+                  path="/friends"
+                  element={
+                    <ProtectedRoute>
+                      <Friends />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/login"
+                  element={
+                    <PageLogin>
+                      <Login setshowNav={setshowNav} setSgin={setSgin} />
+                    </PageLogin>
+                  }
+                />
+                <Route
+                  path="/register"
+                  element={
+                    <PageLogin>
+                      <Register />
+                    </PageLogin>
+                  }
+                />
+                <Route
+                  path="/ForgotPassword"
+                  element={
+                    <PageLogin>
+                      <ForgotPassword />
+                    </PageLogin>
+                  }
+                />
+              </Routes>
+            </StoriesProvider>
+          </PostsProvider>
+        </UserProvider>
       </DarkModeContextProvider>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './login.scss'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/firebase';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,14 +12,16 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Login = ({setSgin,setshowNav}) => {
 
-  const Navigate = useNavigate()
+  const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const location = useLocation()
+  const redirection = location.state?.path || "/"
 
 
   // ======// If the user is present or gone // ======== //
   useEffect(() => {
-    const userState = (e) => {
+    const userState = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           console.log("user sgin");
@@ -45,7 +47,7 @@ const Login = ({setSgin,setshowNav}) => {
       const token = user.uid
       console.log(user);
       setTimeout(() => {
-        Navigate("/")
+        navigate(redirection)
       },1000)
       localStorage.setItem("token",token)
       toast.success("User logged in Successfully",{position:"top-center"})
